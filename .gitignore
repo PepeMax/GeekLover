@@ -1,0 +1,35 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+GeekLoverWithApp/App/*~
+GeekLoverWithApp/App/*.sw[mnpcod]
+GeekLoverWithApp/App/.tmp
+GeekLoverWithApp/App/*.tmp
+GeekLoverWithApp/App/*.tmp.*
+GeekLoverWithApp/App/*.sublime-project
+GeekLoverWithApp/App/*.sublime-workspace
+GeekLoverWithApp/App/.DS_Store
+GeekLoverWithApp/App/Thumbs.db
+GeekLoverWithApp/App/UserInterfaceState.xcuserstate
+GeekLoverWithApp/App/$RECYCLE.BIN/
+
+GeekLoverWithApp/App/*.log
+GeekLoverWithApp/App/log.txt
+GeekLoverWithApp/App/npm-debug.log*
+
+GeekLoverWithApp/App/.idea
+GeekLoverWithApp/App/.ionic
+GeekLoverWithApp/App/.sass-cache
+GeekLoverWithApp/App/.sourcemaps
+GeekLoverWithApp/App/.versions
+GeekLoverWithApp/App/.vscode
+GeekLoverWithApp/App/coverage
+GeekLoverWithApp/App/dist
+GeekLoverWithApp/App/node_modules
+GeekLoverWithApp/App/platforms
+GeekLoverWithApp/App/plugins
+GeekLoverWithApp/App/www
+
+GeekLoverWithApp/App/resources/android/xml/network_security_config.xml
+GeekLoverWithApp/App/src/environments/environment.ts
+GeekLoverWithApp/App/src/environments/environment.prod.ts

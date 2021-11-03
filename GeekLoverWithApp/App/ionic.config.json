@@ -1,0 +1,7 @@
+{
+  "name": "PeojLux",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

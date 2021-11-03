@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"name": "Prolux_Arduino",
+			"path": "../../../../PlatformIO/Projects/Prolux_Arduino"
+		}
+	],
+	"settings": {}
+}
