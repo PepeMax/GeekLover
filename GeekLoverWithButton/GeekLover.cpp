@@ -87,6 +87,11 @@ void setup()
   temps.forceUpdate();
 }
 
+unsigned long convertToWeeks(unsigned long secondes)
+{
+  return secondes / 604800;
+}
+
 unsigned long convertToDays(unsigned long secondes)
 {
   return secondes / 86400;
@@ -173,6 +178,16 @@ void loop()
       buttonCounter_save = buttonCounter;
     }
     ld.printDigit(convertToDays(loveDuration));
+    break;
+
+    case 4:
+    /* Display in weeks */
+    if (buttonCounter_save != buttonCounter)
+    {
+      ld.clear();
+      buttonCounter_save = buttonCounter;
+    }
+    ld.printDigit(convertToWeeks(loveDuration));
     break;
 
   default:
