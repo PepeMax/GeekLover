@@ -14,12 +14,10 @@ Si vous utilisez PlatFormIO, rajouter ce bloc dans le fichier platformio.ini
 
 ```ini
 lib_deps = 
-	arduino-libraries/NTPClient@^3.1.0
-	adafruit/Adafruit Unified Sensor@^1.1.4
-	ozhantr/DigitLedDisplay@^1.1.0
-	bblanchon/ArduinoJson@^6.18.5
+	https://github.com/arduino-libraries/NTPClient.git
 	https://github.com/me-no-dev/ESPAsyncWebServer.git
 	https://github.com/tzapu/WiFiManager.git
+	https://github.com/ozhantr/DigitLedDisplay.git
 ```
 
 ## Version avec l'application mobile
