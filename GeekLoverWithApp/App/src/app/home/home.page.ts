@@ -56,6 +56,18 @@ export class HomePage implements OnInit {
         });
 
         break;
+        case 5:
+        this.http.get(environment.serverIP + "months", {}, {}).then(response => {
+          console.log(response);
+        });
+
+        break;
+        case 6:
+        this.http.get(environment.serverIP + "years", {}, {}).then(response => {
+          console.log(response);
+        });
+
+        break;
 
       default:
         break;
