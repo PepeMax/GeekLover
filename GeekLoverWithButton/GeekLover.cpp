@@ -35,14 +35,13 @@ unsigned long loveDuration;
 
 WiFiUDP ntpUDP;
 
-NTPClient temps(ntpUDP, "fr.pool.ntp.org", 3600, 1000); //3600 = TimeOffset for my country (France) and 1000 = frequency of update time 
+NTPClient temps(ntpUDP, "fr.pool.ntp.org", 3600, 1000); //3600 = TimeOffset for my country (France) and 1000 = frequency of update time
 
 //callback notifying us of the need to save config
 void saveConfigCallback()
 {
-    
-  ESP.restart();
 
+  ESP.restart();
 }
 
 void setup()
@@ -87,6 +86,16 @@ void setup()
   temps.forceUpdate();
 }
 
+unsigned long convertToYears(unsigned long secondes)
+{
+  return round(convertToMonths(secondes) / 12);
+}
+
+unsigned long convertToMonths(unsigned long secondes)
+{
+  return round(convertToDays(secondes) / 30.417);
+}
+
 unsigned long convertToWeeks(unsigned long secondes)
 {
   return secondes / 604800;
@@ -105,11 +114,6 @@ unsigned long convertToHours(unsigned long secondes)
 unsigned long convertToMinutes(unsigned long secondes)
 {
   return secondes / 60;
-}
-
-void convertSecond(unsigned long secondes)
-{
-
 }
 
 void loop()
@@ -144,7 +148,7 @@ void loop()
 
     if (loveDuration > 99999999)
     {
-      //I have about 2 and a half years left to find a solution when the counter reaches 99999999 seconds. 
+      //I have about 2 and a half years left to find a solution when the counter reaches 99999999 seconds.
     }
     ld.printDigit(loveDuration);
 
@@ -180,7 +184,7 @@ void loop()
     ld.printDigit(convertToDays(loveDuration));
     break;
 
-    case 4:
+  case 4:
     /* Display in weeks */
     if (buttonCounter_save != buttonCounter)
     {
@@ -188,6 +192,24 @@ void loop()
       buttonCounter_save = buttonCounter;
     }
     ld.printDigit(convertToWeeks(loveDuration));
+    break;
+  case 5:
+    /* Display in months */
+    if (buttonCounter_save != buttonCounter)
+    {
+      ld.clear();
+      buttonCounter_save = buttonCounter;
+    }
+    ld.printDigit(convertToMonths(loveDuration));
+    break;
+  case 6:
+    /* Display in years */
+    if (buttonCounter_save != buttonCounter)
+    {
+      ld.clear();
+      buttonCounter_save = buttonCounter;
+    }
+    ld.printDigit(convertToYears(loveDuration));
     break;
 
   default:

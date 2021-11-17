@@ -87,64 +87,50 @@ void setup()
     server.on("/seconds", HTTP_GET, [](AsyncWebServerRequest *request)
               {
                 count = 0;
-                Serial.println(loveDuration);
                 request->send(200, "text/plain", String(1));
-                Serial.println("Requête nb");
               });
 
     //Set display in minutes
     server.on("/minutes", HTTP_GET, [](AsyncWebServerRequest *request)
               {
                 count = 1;
-                Serial.println(loveDuration);
                 request->send(200, "text/plain", String(1));
-                Serial.println("Requête nb");
               });
 
     //Set display in hours
     server.on("/hours", HTTP_GET, [](AsyncWebServerRequest *request)
               {
                 count = 2;
-                Serial.println(loveDuration);
                 request->send(200, "text/plain", String(1));
-                Serial.println("Requête nb");
               });
 
     //Set display in days
     server.on("/days", HTTP_GET, [](AsyncWebServerRequest *request)
               {
                 count = 3;
-                Serial.println(loveDuration);
                 request->send(200, "text/plain", String(1));
-                Serial.println("Requête state");
               });
 
     //Set display in weeks
     server.on("/weeks", HTTP_GET, [](AsyncWebServerRequest *request)
               {
                 count = 4;
-                Serial.println(loveDuration);
                 request->send(200, "text/plain", String(1));
-                Serial.println("Requête nb");
               });
 
-    // //Set display in months
-    // server.on("/months", HTTP_GET, [](AsyncWebServerRequest *request)
-    //           {
-    //             count = 5;
-    //             Serial.println(loveDuration);
-    //             request->send(200, "text/plain", String(1));
-    //             Serial.println("Requête nb");
-    //           });
+    //Set display in months
+    server.on("/months", HTTP_GET, [](AsyncWebServerRequest *request)
+              {
+                count = 5;
+                request->send(200, "text/plain", String(1));
+              });
 
-    // //Set display in years
-    // server.on("/years", HTTP_GET, [](AsyncWebServerRequest *request)
-    //           {
-    //             count = 6;
-    //             Serial.println(loveDuration);
-    //             request->send(200, "text/plain", String(1));
-    //             Serial.println("Requête state");
-    //           });
+    //Set display in years
+    server.on("/years", HTTP_GET, [](AsyncWebServerRequest *request)
+              {
+                count = 6;
+                request->send(200, "text/plain", String(1));
+              });
 
     /* Set the brightness min:1, max:15 */
     ld.setBright(10);
@@ -157,15 +143,15 @@ void setup()
   }
 }
 
-// unsigned long convertToYears(unsigned long secondes)
-// {
-//   return secondes / 1540000000;
-// }
+unsigned long convertToYears(unsigned long secondes)
+{
+  return round(convertToMonths(secondes) / 12);
+}
 
-// unsigned long convertToMonths(unsigned long secondes)
-// {
-//   return secondes / 628000000;
-// }
+unsigned long convertToMonths(unsigned long secondes)
+{  
+  return round(convertToDays(secondes) / 30.417);
+}
 
 unsigned long convertToWeeks(unsigned long secondes)
 {
@@ -252,24 +238,24 @@ void loop()
       }
       ld.printDigit(convertToWeeks(loveDuration));
       break;
-      // case 5:
-      //   /* Display in months */
-      //   if (count_save != count)
-      //   {
-      //     ld.clear();
-      //     count_save = count;
-      //   }
-      //   ld.printDigit(convertToMonths(loveDuration));
-      //   break;
-      // case 6:
-      //   /* Display in years */
-      //   if (count_save != count)
-      //   {
-      //     ld.clear();
-      //     count_save = count;
-      //   }
-      //   ld.printDigit(convertToYears(loveDuration));
-      //   break;
+      case 5:
+        /* Display in months */
+        if (count_save != count)
+        {
+          ld.clear();
+          count_save = count;
+        }
+        ld.printDigit(convertToMonths(loveDuration));
+        break;
+      case 6:
+        /* Display in years */
+        if (count_save != count)
+        {
+          ld.clear();
+          count_save = count;
+        }
+        ld.printDigit(convertToYears(loveDuration));
+        break;
 
     default:
       break;
